@@ -1,3 +1,17 @@
+/*
+===============================================================================
+Ranking Analysis
+===============================================================================
+Purpose:
+    - To rank items (e.g., products, customers) based on performance or other metrics.
+    - To identify top performers or laggards.
+
+SQL Functions Used:
+    - Window Ranking Functions: RANK(), DENSE_RANK(), ROW_NUMBER(), TOP
+    - Clauses: GROUP BY, ORDER BY
+===============================================================================
+*/
+
 -- Cumulative analysis
 -- Aggregate the data progressively over time
 -- Helps to understand whether our business is growing or declining
@@ -20,4 +34,5 @@ FROM
 	FROM gold.fact_sales
 	WHERE order_date IS NOT NULL
 	GROUP BY DATETRUNC(month, order_date)
-) t
+
+) t;
