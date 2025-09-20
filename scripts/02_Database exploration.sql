@@ -12,6 +12,7 @@ Table Used:
 ===============================================================================
 */
 
+
 -- Retrieve a list of all tables in the database
 SELECT 
     TABLE_CATALOG, 
@@ -28,3 +29,4 @@ SELECT
     CHARACTER_MAXIMUM_LENGTH
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'dim_customers';
+
