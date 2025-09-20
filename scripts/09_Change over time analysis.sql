@@ -13,6 +13,7 @@ SQL Functions Used:
 ===============================================================================
 */
 
+
 -- Analyze sales performance over time
 
 SELECT
@@ -61,3 +62,4 @@ SELECT
 FROM gold.dim_customers
 GROUP BY DATETRUNC(year, create_date)
 ORDER BY DATETRUNC(year, create_date);
+
