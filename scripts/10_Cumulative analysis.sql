@@ -12,9 +12,6 @@ SQL Functions Used:
 ===============================================================================
 */
 
--- Aggregate the data progressively over time
--- Helps to understand whether our business is growing or declining
-
 
 -- Calculate the total sales per month
 -- and the running total of sales over time
@@ -34,3 +31,4 @@ FROM
 	WHERE order_date IS NOT NULL
 	GROUP BY DATETRUNC(month, order_date)
 ) t;
+
