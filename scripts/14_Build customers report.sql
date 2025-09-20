@@ -99,6 +99,7 @@ SELECT
 		WHEN total_orders = 0 THEN 0
 		ELSE total_sales / total_orders
 	END AS average_order_value,
+	
 	-- Compute average monthly spend
 	-- Average Monthly Spending = Total Sales / Nr. of Months
 	CASE
