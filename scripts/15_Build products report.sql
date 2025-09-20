@@ -21,11 +21,19 @@ Highlights:
 ===================================================================================
 */
 
-CREATE VIEW gold.report_products AS 
+-- =============================================================================
+-- Create Report: gold.report_products
+-- =============================================================================
+IF OBJECT_ID('gold.report_products', 'V') IS NOT NULL
+    DROP VIEW gold.report_products;
+GO
+	
+CREATE VIEW gold.report_products AS
+
+WITH base_query AS (
 /*---------------------------------------------------------------------------
 1) Base Query: Retrieves core columns from tables
 ---------------------------------------------------------------------------*/
-WITH base_query AS(
 SELECT
 	f.order_number,
 	f.order_date,
@@ -41,9 +49,9 @@ FROM gold.fact_sales f
 LEFT JOIN gold.dim_products p
 ON f.product_key = p.product_key
 WHERE order_date IS NOT NULL  -- Only consider valid sales dates
-),
+)
 
-product_aggregations AS (
+, product_aggregations AS (
 /*---------------------------------------------------------------------------
 2) Product Aggregations: Summarizes key metrics at the product level
 ---------------------------------------------------------------------------*/
@@ -70,7 +78,7 @@ product_aggregations AS (
 )
 
 /*---------------------------------------------------------------------------
-3) Final Query: Combines alll product results into one output
+3) Final Query: Combines all product results into one output
 ---------------------------------------------------------------------------*/
 SELECT
 	product_key,
@@ -96,9 +104,10 @@ SELECT
 		WHEN total_orders = 0 THEN 0
 		ELSE total_sales / total_orders
 	END AS average_order_revenue,
+	
 	-- Average Monthly Revenue
 	CASE
 		WHEN lifespan = 0 THEN total_sales
 		ELSE total_sales / lifespan
 	END AS average_monthly_revenue
-FROM product_aggregations
+FROM product_aggregations;
