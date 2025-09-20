@@ -1,7 +1,17 @@
--- Change over time analysis
--- Analyze how a measure evolves over time
--- Helps track trends and identify seasonality in your data
+/*
+===============================================================================
+Change Over Time Analysis
+===============================================================================
+Purpose:
+    - To track trends, growth, and changes in key metrics over time.
+    - For time-series analysis and identifying seasonality.
+    - To measure growth or decline over specific periods.
 
+SQL Functions Used:
+    - Date Functions: DATEPART(), DATETRUNC(), FORMAT()
+    - Aggregate Functions: SUM(), COUNT(), AVG()
+===============================================================================
+*/
 
 -- Analyze sales performance over time
 
@@ -14,7 +24,7 @@ SELECT
 FROM gold.fact_sales
 WHERE order_date IS NOT NULL
 GROUP BY YEAR(order_date), MONTH(order_date)
-ORDER BY YEAR(order_date), MONTH(order_date) ASC
+ORDER BY YEAR(order_date), MONTH(order_date) ASC;
 
 
 -- DATETRUNC() rounds a date or timestamp to a specified date part
@@ -27,7 +37,7 @@ SELECT
 FROM gold.fact_sales
 WHERE order_date IS NOT NULL
 GROUP BY DATETRUNC(year, order_date)
-ORDER BY DATETRUNC(year, order_date) ASC
+ORDER BY DATETRUNC(year, order_date) ASC;
 
 
 -- FORMAT() shows the date in the way you give the format of the date
@@ -40,7 +50,7 @@ SELECT
 FROM gold.fact_sales
 WHERE order_date IS NOT NULL
 GROUP BY FORMAT(order_date, 'yyyy-MMM')
-ORDER BY FORMAT(order_date, 'yyyy-MMM') 
+ORDER BY FORMAT(order_date, 'yyyy-MMM') ;
 
 
 -- How many customers were added each year?
@@ -50,4 +60,4 @@ SELECT
 	COUNT(customer_key) AS total_customer
 FROM gold.dim_customers
 GROUP BY DATETRUNC(year, create_date)
-ORDER BY DATETRUNC(year, create_date)
+ORDER BY DATETRUNC(year, create_date);
