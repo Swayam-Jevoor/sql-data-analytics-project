@@ -14,9 +14,6 @@ SQL Functions Used:
 ===============================================================================
 */
 
--- The process of comparing the current value to a target value
--- helps measure success and compare performance
-
 
 /* Analyze the yearly performance of products by comparing each product's sales 
 to both its average sales performance and the previous year's sales */
@@ -51,3 +48,4 @@ SELECT
 	END py_change
 FROM yearly_product_sales
 ORDER BY product_name, order_year;
+
