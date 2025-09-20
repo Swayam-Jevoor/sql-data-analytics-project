@@ -11,6 +11,7 @@ SQL Functions Used:
 ===============================================================================
 */
 
+
 -- Retrieve a list of unique countries from which customers originate
 
 SELECT DISTINCT
@@ -26,3 +27,4 @@ SELECT DISTINCT
 	product_name
 FROM gold.dim_products
 ORDER BY category, subcategory, product_name;
+
