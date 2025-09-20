@@ -1,4 +1,17 @@
--- Data segmentation
+/*
+===============================================================================
+Data Segmentation Analysis
+===============================================================================
+Purpose:
+    - To group data into meaningful categories for targeted insights.
+    - For customer segmentation, product categorization, or regional analysis.
+
+SQL Functions Used:
+    - CASE: Defines custom segmentation logic.
+    - GROUP BY: Groups data into segments.
+===============================================================================
+*/
+
 -- Group the data based on specific range
 -- Helps understand the correlation between two measures
 
@@ -25,7 +38,7 @@ SELECT
 	COUNT(product_key) AS total_products
 FROM product_segements
 GROUP BY product_cost_range
-ORDER BY total_products DESC
+ORDER BY total_products DESC;
 
 
 /* Group customers into three segments based on their spending behavior:
@@ -61,4 +74,4 @@ FROM (
 	FROM customer_spending
 ) t
 GROUP BY customer_segment
-ORDER BY total_customers DESC
+ORDER BY total_customers DESC;
