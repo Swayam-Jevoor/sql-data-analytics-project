@@ -12,6 +12,7 @@ SQL Functions Used:
 ===============================================================================
 */
 
+
 -- Which 5 products generate the highest revenue?
 
 SELECT TOP 5
@@ -86,3 +87,4 @@ LEFT JOIN gold.dim_customers AS c
 ON f.customer_key = c.customer_key
 GROUP BY c.customer_key, c.first_name, c.last_name
 ORDER BY total_revenue;
+
