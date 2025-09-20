@@ -11,6 +11,7 @@ SQL Functions Used:
 ===============================================================================
 */
 
+
 -- Find the total sales
 
 SELECT
@@ -99,3 +100,4 @@ SELECT
 	'Total Nr. Customers' AS measure_name,
 	COUNT(customer_key) AS measure_value
 FROM gold.dim_customers;
+
