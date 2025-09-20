@@ -12,9 +12,6 @@ SQL Functions Used:
 ===============================================================================
 */
 
--- Group the data based on specific range
--- Helps understand the correlation between two measures
-
 
 /* Segment products into cost ranges and 
    count how many products fall into each segment */
@@ -75,3 +72,4 @@ FROM (
 ) t
 GROUP BY customer_segment
 ORDER BY total_customers DESC;
+
