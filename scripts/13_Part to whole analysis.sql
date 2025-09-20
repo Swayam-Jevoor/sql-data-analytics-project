@@ -1,4 +1,18 @@
--- Part to whole analysis
+/*
+===============================================================================
+Part-to-Whole Analysis
+===============================================================================
+Purpose:
+    - To compare performance or metrics across dimensions or time periods.
+    - To evaluate differences between categories.
+    - Useful for A/B testing or regional comparisons.
+
+SQL Functions Used:
+    - SUM(), AVG(): Aggregates values for comparison.
+    - Window Functions: SUM() OVER() for total calculations.
+===============================================================================
+*/
+
 /* Analyze how an individual part is performing compared to the overall,
    allowing us to understamd which category has the greatest impact on the business */
 
@@ -20,4 +34,4 @@ SELECT
 	SUM(total_sales) OVER () AS overall_sales,
 	CONCAT(ROUND((CAST(total_sales AS FLOAT) / SUM(total_sales) OVER ()) * 100, 2), '%') AS percentage_of_total
 FROM category_sales
-ORDER BY total_sales DESC
+ORDER BY total_sales DESC;
