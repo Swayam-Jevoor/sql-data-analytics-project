@@ -1,18 +1,17 @@
 /*
 ===============================================================================
-Ranking Analysis
+Cumulative Analysis
 ===============================================================================
 Purpose:
-    - To rank items (e.g., products, customers) based on performance or other metrics.
-    - To identify top performers or laggards.
+    - To calculate running totals or moving averages for key metrics.
+    - To track performance over time cumulatively.
+    - Useful for growth analysis or identifying long-term trends.
 
 SQL Functions Used:
-    - Window Ranking Functions: RANK(), DENSE_RANK(), ROW_NUMBER(), TOP
-    - Clauses: GROUP BY, ORDER BY
+    - Window Functions: SUM() OVER(), AVG() OVER()
 ===============================================================================
 */
 
--- Cumulative analysis
 -- Aggregate the data progressively over time
 -- Helps to understand whether our business is growing or declining
 
@@ -36,3 +35,4 @@ FROM
 	GROUP BY DATETRUNC(month, order_date)
 
 ) t;
+
