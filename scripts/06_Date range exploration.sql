@@ -11,6 +11,7 @@ SQL Functions Used:
 ===============================================================================
 */
 
+
 -- Find the date of first and last order
 -- How many years of sales are available
 
@@ -30,3 +31,4 @@ SELECT
 	MAX(birth_date) AS youngest_customer,
 	DATEDIFF(year, MAX(birth_date), GETDATE()) AS youngest_age
 FROM gold.dim_customers;
+
