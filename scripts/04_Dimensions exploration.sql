@@ -1,15 +1,28 @@
--- Explore all countries our customers come from
+/*
+===============================================================================
+Dimensions Exploration
+===============================================================================
+Purpose:
+    - To explore the structure of dimension tables.
+	
+SQL Functions Used:
+    - DISTINCT
+    - ORDER BY
+===============================================================================
+*/
+
+-- Retrieve a list of unique countries from which customers originate
 
 SELECT DISTINCT
 country
 FROM gold.dim_customers
+ORDER BY country;
 
 
--- Explore all product categories "The Major Divisions"
-
+-- Retrieve a list of unique categories, subcategories, and products
 SELECT DISTINCT
 	category,
 	sub_category,
 	product_name
 FROM gold.dim_products
-ORDER BY 1, 2, 3
+ORDER BY category, subcategory, product_name;
