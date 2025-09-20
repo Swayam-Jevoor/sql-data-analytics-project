@@ -12,6 +12,7 @@ SQL Functions Used:
 ===============================================================================
 */
 
+
 -- Find total customers by countries
 
 SELECT
@@ -88,3 +89,4 @@ LEFT JOIN gold.dim_customers AS c
 ON f.customer_key = c.customer_key
 GROUP BY c.country
 ORDER BY total_sold_items DESC;
+
