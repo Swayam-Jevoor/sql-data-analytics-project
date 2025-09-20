@@ -13,9 +13,6 @@ SQL Functions Used:
 ===============================================================================
 */
 
-/* Analyze how an individual part is performing compared to the overall,
-   allowing us to understamd which category has the greatest impact on the business */
-
 
 -- Which categories contribute the most to overall sales
 
@@ -35,3 +32,4 @@ SELECT
 	CONCAT(ROUND((CAST(total_sales AS FLOAT) / SUM(total_sales) OVER ()) * 100, 2), '%') AS percentage_of_total
 FROM category_sales
 ORDER BY total_sales DESC;
+
