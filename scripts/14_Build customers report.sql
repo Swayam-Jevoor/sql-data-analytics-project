@@ -21,11 +21,19 @@ Highlights:
 ===================================================================================
 */
 
-CREATE VIEW gold.report_customers AS 
+-- =============================================================================
+-- Create Report: gold.report_customers
+-- =============================================================================
+IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL
+    DROP VIEW gold.report_customers;
+GO
+
+CREATE VIEW gold.report_customers AS
+
+WITH base_query AS (
 /*---------------------------------------------------------------------------
 1) Base Query: Retrieves core columns from tables
 ---------------------------------------------------------------------------*/
-WITH base_query AS (
 	SELECT
 		f.order_number,
 		f.product_key,
@@ -40,9 +48,9 @@ WITH base_query AS (
 	LEFT JOIN gold.dim_customers c
 	ON f.customer_key = c.customer_key
 	WHERE order_date IS NOT NULL
-),
+)
 
-customer_aggregation AS (
+, customer_aggregation AS (
 /*---------------------------------------------------------------------------
 2) Customer Aggregations: Summarizes key metrics at the customer level
 ---------------------------------------------------------------------------*/
@@ -97,4 +105,4 @@ SELECT
 		WHEN lifespan = 0 THEN total_sales
 		ELSE total_sales / lifespan
 	END AS average_monthly_spend
-FROM customer_aggregation
+FROM customer_aggregation;
